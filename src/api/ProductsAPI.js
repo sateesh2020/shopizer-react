@@ -16,7 +16,7 @@ class ProductsAPI {
   static getFeaturedProducts() {
     return axios
       .get(`${API_CONSTANTS.URL}${GET_PRODUCTS}/group/FEATURED_ITEM`)
-      .then(response => response.data)
+      .then(response => response.data.products)
       .catch(error => {
         console.error(error);
         return error;

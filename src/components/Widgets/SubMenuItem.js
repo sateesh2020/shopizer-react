@@ -7,8 +7,6 @@ import {
   DropdownItem,
 } from 'reactstrap';
 
-import Menu from './Menu';
-
 export default class SubMenuItem extends Component {
   constructor(props) {
     super(props);
@@ -35,7 +33,7 @@ export default class SubMenuItem extends Component {
   }
 
   render() {
-    const { caption, menuItems, classes } = this.props;
+    const { caption, menuItems } = this.props;
     return (
       <Dropdown
         className="nav-link"
