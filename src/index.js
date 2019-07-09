@@ -1,8 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
+import { Route, Switch, Redirect, Router } from 'react-router-dom';
 
 import Home from './containers/Home';
+import Category from './containers/Category';
+
+import history from './history';
+
 import configureStore from './redux/store';
 import * as serviceWorker from './serviceWorker';
 
@@ -10,7 +15,18 @@ const store = configureStore();
 
 ReactDOM.render(
   <Provider store={store}>
-    <Home />
+    <Router history={history}>
+      <Switch>
+        <Route exact path="/home" name="Home Page" component={Home} />
+        <Route
+          exact
+          path="/category"
+          name="Category Page"
+          component={Category}
+        />
+        <Redirect from="" to="/home" />
+      </Switch>
+    </Router>
   </Provider>,
   document.getElementById('root')
 );

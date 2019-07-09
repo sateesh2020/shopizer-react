@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import {
-  NavLink,
   Dropdown,
   DropdownToggle,
   DropdownMenu,
   DropdownItem,
 } from 'reactstrap';
+import { Link } from 'react-router-dom';
 
 export default class SubMenuItem extends Component {
   constructor(props) {
@@ -33,7 +33,7 @@ export default class SubMenuItem extends Component {
   }
 
   render() {
-    const { caption, menuItems } = this.props;
+    const { caption, menuItems, categoryId } = this.props;
     return (
       <Dropdown
         className="nav-link"
@@ -42,14 +42,19 @@ export default class SubMenuItem extends Component {
         isOpen={this.state.dropdownOpen}
         toggle={this.toggle}
       >
-        <DropdownToggle tag="a" href="#" caret>
-          {caption}
+        <DropdownToggle tag="span" caret>
+          <Link to={{ pathname: '/category', id: categoryId }}>{caption}</Link>
         </DropdownToggle>
         <DropdownMenu>
           {menuItems.map(item => {
             return (
               <DropdownItem key={item.code}>
-                <NavLink>{item.description.name}</NavLink>
+                <Link
+                  to={{ pathname: '/category', id: item.id }}
+                  className="nav-link"
+                >
+                  {item.description.name}
+                </Link>
               </DropdownItem>
             );
           })}

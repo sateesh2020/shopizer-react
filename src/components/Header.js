@@ -15,7 +15,6 @@ class Header extends Component {
 
   render() {
     let { categories } = this.props;
-    console.log(categories);
     return (
       <header className="header_area">
         <div className="top_header_area">

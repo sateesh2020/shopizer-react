@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { NavLink, Nav, NavItem } from 'reactstrap';
+import { Nav, NavItem } from 'reactstrap';
+import { Link } from 'react-router-dom';
 
 import SubMenuItem from './SubMenuItem';
 
@@ -13,6 +14,7 @@ export default class Menu extends Component {
             <SubMenuItem
               caption={menuItem.description.name}
               menuItems={menuItem.children}
+              categoryId={menuItem.id}
             />
           </NavItem>
         );
@@ -20,7 +22,15 @@ export default class Menu extends Component {
 
       return (
         <NavItem key={menuItem.code}>
-          <NavLink>{menuItem.description.name}</NavLink>
+          <Link
+            to={{
+              pathname: '/category',
+              id: menuItem.id,
+            }}
+            className="nav-link"
+          >
+            {menuItem.description.name}
+          </Link>
         </NavItem>
       );
     });

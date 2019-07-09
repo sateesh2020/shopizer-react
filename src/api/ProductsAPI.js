@@ -4,10 +4,21 @@ import { API_CONSTANTS } from '../config';
 const GET_PRODUCTS = '/products';
 
 class ProductsAPI {
-  static getAllProducts() {
+  /*
+   * Filtering product lists based on product attributes
+   * ?category=1
+   * &manufacturer=2
+   * &type=...
+   * &lang=en|fr NOT REQUIRED, will use request language
+   * &start=0 NOT REQUIRED, can be used for pagination
+   * &count=10 NOT REQUIRED, can be used to limit item count
+   */
+  static getAllProducts(filters) {
     return axios
-      .get(`${API_CONSTANTS.URL}${GET_PRODUCTS}`)
-      .then(response => response.data)
+      .get(`${API_CONSTANTS.URL}${GET_PRODUCTS}`, {
+        params: filters,
+      })
+      .then(response => response.data.products)
       .catch(error => {
         console.error(error);
         return error;

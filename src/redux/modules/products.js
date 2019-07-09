@@ -36,9 +36,9 @@ function updateFeatured(featured) {
   };
 }
 
-export function loadProducts() {
+export function loadProducts(filters) {
   return function(dispatch) {
-    return ProductsAPI.getAllProducts()
+    return ProductsAPI.getAllProducts(filters)
       .then(products => {
         dispatch(updateProducts(products));
       })
