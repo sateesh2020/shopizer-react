@@ -7,6 +7,8 @@ import {
 } from 'reactstrap';
 import { Link } from 'react-router-dom';
 
+import { SHOP_URLS } from '../../config/constants';
+
 export default class SubMenuItem extends Component {
   constructor(props) {
     super(props);
@@ -33,7 +35,7 @@ export default class SubMenuItem extends Component {
   }
 
   render() {
-    const { caption, menuItems, categoryId } = this.props;
+    const { caption, menuItems, categoryId, friendlyUrl } = this.props;
     return (
       <Dropdown
         className="nav-link"
@@ -43,14 +45,25 @@ export default class SubMenuItem extends Component {
         toggle={this.toggle}
       >
         <DropdownToggle tag="span" caret>
-          <Link to={{ pathname: '/category', id: categoryId }}>{caption}</Link>
+          <Link
+            to={{
+              pathname: SHOP_URLS.CATEGORY + '/' + friendlyUrl,
+              id: categoryId,
+            }}
+          >
+            {caption}
+          </Link>
         </DropdownToggle>
         <DropdownMenu>
           {menuItems.map(item => {
             return (
               <DropdownItem key={item.code}>
                 <Link
-                  to={{ pathname: '/category', id: item.id }}
+                  to={{
+                    pathname:
+                      SHOP_URLS.CATEGORY + '/' + item.description.friendlyUrl,
+                    id: item.id,
+                  }}
                   className="nav-link"
                 >
                   {item.description.name}

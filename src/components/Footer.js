@@ -9,7 +9,7 @@ export default class Footer extends Component {
             <div className="col-12 col-md-6 col-lg-3">
               <div className="single_footer_area">
                 <div className="footer-logo">
-                  <img src="assets/img/core-img/logo.png" alt="" />
+                  <img src="/assets/img/core-img/logo.png" alt="" />
                 </div>
                 <div className="copywrite_text d-flex align-items-center">
                   <p>

@@ -1,5 +1,6 @@
 import axios from 'axios';
-import { API_CONSTANTS } from '../config';
+
+import { API_URLS } from '../config/constants';
 
 const GET_PRODUCTS = '/products';
 
@@ -15,7 +16,7 @@ class ProductsAPI {
    */
   static getAllProducts(filters) {
     return axios
-      .get(`${API_CONSTANTS.URL}${GET_PRODUCTS}`, {
+      .get(`${API_URLS.BASE}${GET_PRODUCTS}`, {
         params: filters,
       })
       .then(response => response.data.products)
@@ -26,7 +27,7 @@ class ProductsAPI {
   }
   static getFeaturedProducts() {
     return axios
-      .get(`${API_CONSTANTS.URL}${GET_PRODUCTS}/group/FEATURED_ITEM`)
+      .get(`${API_URLS.BASE}${GET_PRODUCTS}/group/FEATURED_ITEM`)
       .then(response => response.data.products)
       .catch(error => {
         console.error(error);
@@ -36,7 +37,7 @@ class ProductsAPI {
 
   static getProductDetails(id) {
     return axios
-      .get(`${API_CONSTANTS.URL}${GET_PRODUCTS}/${id}`)
+      .get(`${API_URLS.BASE}${GET_PRODUCTS}/${id}`)
       .then(response => response.data)
       .catch(error => {
         console.error(error);

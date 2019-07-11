@@ -3,10 +3,12 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { Route, Switch, Redirect, Router } from 'react-router-dom';
 
+import Shell from './containers/Shell';
 import Home from './containers/Home';
 import Category from './containers/Category';
 
 import history from './history';
+import { SHOP_URLS } from './config/constants';
 
 import configureStore from './redux/store';
 import * as serviceWorker from './serviceWorker';
@@ -17,14 +19,21 @@ ReactDOM.render(
   <Provider store={store}>
     <Router history={history}>
       <Switch>
-        <Route exact path="/home" name="Home Page" component={Home} />
-        <Route
-          exact
-          path="/category"
-          name="Category Page"
-          component={Category}
-        />
-        <Redirect from="" to="/home" />
+        <Shell>
+          <Route
+            component={({ match }) => (
+              <React.Fragment>
+                <Route exact path={SHOP_URLS.HOME} component={Home} />
+                <Route
+                  exact
+                  path={SHOP_URLS.CATEGORY + '/:category'}
+                  component={Category}
+                />
+              </React.Fragment>
+            )}
+          />
+        </Shell>
+        <Redirect from="" to={SHOP_URLS.HOME} />
       </Switch>
     </Router>
   </Provider>,

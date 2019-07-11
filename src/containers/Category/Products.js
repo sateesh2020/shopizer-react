@@ -5,13 +5,17 @@ export default class Products extends Component {
   render() {
     let { products } = this.props;
     return (
-      <section className="new_arrivals_area section_padding_100_0 clearfix">
-        <div className="container">
-          <div className="row shop-new-arrivals">
-            {products.map(product => {
-              return <ProductCard key={product.id} product={product} />;
-            })}
-          </div>
+      <section className="shop_grid_product_area">
+        <div className="row">
+          {products.map(product => {
+            return (
+              <ProductCard
+                key={product.id}
+                product={product}
+                colClass="col-md-4"
+              />
+            );
+          })}
         </div>
       </section>
     );

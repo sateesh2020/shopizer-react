@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { Nav, NavItem } from 'reactstrap';
 import { Link } from 'react-router-dom';
 
+import { SHOP_URLS } from '../../config/constants';
+
 import SubMenuItem from './SubMenuItem';
 
 export default class Menu extends Component {
@@ -15,6 +17,7 @@ export default class Menu extends Component {
               caption={menuItem.description.name}
               menuItems={menuItem.children}
               categoryId={menuItem.id}
+              friendlyUrl={menuItem.description.friendlyUrl}
             />
           </NavItem>
         );
@@ -24,7 +27,8 @@ export default class Menu extends Component {
         <NavItem key={menuItem.code}>
           <Link
             to={{
-              pathname: '/category',
+              pathname:
+                SHOP_URLS.CATEGORY + '/' + menuItem.description.friendlyUrl,
               id: menuItem.id,
             }}
             className="nav-link"
