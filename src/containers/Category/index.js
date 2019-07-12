@@ -4,15 +4,19 @@ import { connect } from 'react-redux';
 import Products from './Products';
 import { ProductFilter } from '../../components/Widgets';
 
-import { loadProducts } from '../../redux/modules/products';
+import { loadProducts, filterProducts } from '../../redux/modules/products';
 import { loadCategory } from '../../redux/modules/categories';
 
 class Category extends Component {
+  constructor(props) {
+    super(props);
+    this.filter = this.filter.bind(this);
+  }
   componentDidMount() {
     let categoryId = this.props.location.id;
     if (!categoryId) {
-      //categoryId = 1;
-      this.props.history.goBack();
+      categoryId = 1;
+      //this.props.history.goBack();
     } else {
       this.props.loadProducts({
         category: categoryId,
@@ -22,6 +26,7 @@ class Category extends Component {
   }
   componentDidUpdate(prevProps) {
     let categoryId = this.props.location.id;
+    categoryId = categoryId || 1;
     if (categoryId && categoryId !== prevProps.location.id) {
       this.props.loadProducts({
         category: categoryId,
@@ -29,16 +34,21 @@ class Category extends Component {
       this.props.loadCategory(categoryId);
     }
   }
-
+  filter(filterType, filterVal) {
+    this.props.filterProducts({ [filterType]: filterVal });
+  }
   render() {
-    let { products, category } = this.props;
-    console.log(category);
+    let { products, category, filters } = this.props;
     return (
       <section className="shop_grid_area section_padding_100">
         <div className="container">
           <div className="row">
             <div className="col-12 col-md-4 col-lg-3">
-              <ProductFilter categories={category.children} />
+              <ProductFilter
+                filter={this.filter}
+                categories={category.children}
+                filters={filters}
+              />
             </div>
             <div className="col-12 col-md-8 col-lg-9">
               <Products products={products} />
@@ -53,10 +63,12 @@ class Category extends Component {
 const mapStateToProps = ({ products, categories }) => ({
   products: products.products,
   category: categories.category,
+  filters: products.filters,
 });
 
 const mapDispatchToProps = dispatch => ({
   loadProducts: filter => dispatch(loadProducts(filter)),
+  filterProducts: filters => dispatch(filterProducts(filters)),
   loadCategory: categoryId => dispatch(loadCategory(categoryId)),
 });
 
