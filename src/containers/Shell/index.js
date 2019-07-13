@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
-import { Route, Switch, Redirect, Router } from 'react-router-dom';
+import { connect } from 'react-redux';
 
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
 
-export default class Shell extends Component {
+import { loadManufactures } from '../../redux/modules/manufactures';
+
+class Shell extends Component {
   componentDidMount() {
-    console.log('In Shell Page');
+    this.props.loadManufactures();
   }
   render() {
     return (
@@ -20,3 +22,14 @@ export default class Shell extends Component {
     );
   }
 }
+
+const mapDispatchToProps = dispatch => ({
+  loadManufactures: () => dispatch(loadManufactures()),
+});
+
+Shell = connect(
+  null,
+  mapDispatchToProps
+)(Shell);
+
+export default Shell;

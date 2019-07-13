@@ -15,8 +15,8 @@ class Category extends Component {
   componentDidMount() {
     let categoryId = this.props.location.id;
     if (!categoryId) {
-      categoryId = 1;
-      //this.props.history.goBack();
+      //categoryId = 1;
+      this.props.history.goBack();
     } else {
       this.props.loadProducts({
         category: categoryId,
@@ -26,7 +26,6 @@ class Category extends Component {
   }
   componentDidUpdate(prevProps) {
     let categoryId = this.props.location.id;
-    categoryId = categoryId || 1;
     if (categoryId && categoryId !== prevProps.location.id) {
       this.props.loadProducts({
         category: categoryId,
@@ -38,7 +37,7 @@ class Category extends Component {
     this.props.filterProducts({ [filterType]: filterVal });
   }
   render() {
-    let { products, category, filters } = this.props;
+    let { products, category, filters, manufactures } = this.props;
     return (
       <section className="shop_grid_area section_padding_100">
         <div className="container">
@@ -47,6 +46,7 @@ class Category extends Component {
               <ProductFilter
                 filter={this.filter}
                 categories={category.children}
+                manufactures={manufactures}
                 filters={filters}
               />
             </div>
@@ -60,10 +60,11 @@ class Category extends Component {
   }
 }
 
-const mapStateToProps = ({ products, categories }) => ({
+const mapStateToProps = ({ products, categories, manufactures }) => ({
   products: products.products,
   category: categories.category,
   filters: products.filters,
+  manufactures: manufactures.manufactures,
 });
 
 const mapDispatchToProps = dispatch => ({

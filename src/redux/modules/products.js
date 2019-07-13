@@ -81,7 +81,7 @@ function filterByManufacturer(allProducts, filterVal) {
     return allProducts;
   }
   let _filtered = filter(allProducts, product => {
-    return product.manufacturer.code == filterVal;
+    return product.manufacturer.code === filterVal;
   });
   return _filtered;
 }
@@ -127,7 +127,7 @@ function filterProductsPromise(newFilters, state) {
             console.log('No Filter');
             break;
         }
-        if (index == _keys.length - 1) {
+        if (index === _keys.length - 1) {
           resolve({ filters: _filters, products: _filteredProducts });
         }
       });

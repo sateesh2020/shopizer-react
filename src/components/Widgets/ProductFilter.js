@@ -5,10 +5,10 @@ import { PRICE_FILTERS as priceFilters, FILTERS } from '../../config/constants';
 
 export default class ProductFilter extends Component {
   render() {
-    let { categories, filters, filter } = this.props;
+    let { categories, manufactures, filters, filter } = this.props;
     return (
       <div className="shop_sidebar_area">
-        <div className="widget catagory mb-50">
+        <div className="catagory mb-50">
           <div className="nav-side-menu">
             <h6 className="widget-title">Categories</h6>
             <div className="menu-list">
@@ -36,6 +36,43 @@ export default class ProductFilter extends Component {
             </div>
           </div>
         </div>
+        {manufactures.length > 1 && (
+          <div className="catagory mb-50">
+            <div className="nav-side-menu">
+              <h6 className="widget-title">Manufactures</h6>
+              <div className="menu-list">
+                <ul className="menu-content">
+                  <li
+                    className={classnames({
+                      active: !filters[FILTERS.MANUFACTURER],
+                    })}
+                    onClick={() => filter(FILTERS.MANUFACTURER, null)}
+                  >
+                    <div className="link">All</div>
+                  </li>
+                  {manufactures.map(manufacturer => {
+                    return (
+                      <li
+                        key={manufacturer.code}
+                        className={classnames({
+                          active:
+                            filters[FILTERS.MANUFACTURER] == manufacturer.code,
+                        })}
+                        onClick={() =>
+                          filter(FILTERS.MANUFACTURER, manufacturer.code)
+                        }
+                      >
+                        <div className="link">
+                          {manufacturer.description.name}
+                        </div>
+                      </li>
+                    );
+                  })}
+                </ul>
+              </div>
+            </div>
+          </div>
+        )}
 
         <div className="price mb-50">
           <h6 className="widget-title">Filter by Price</h6>
