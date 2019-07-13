@@ -9,7 +9,9 @@ const GET_CATEGORY_FAILURE = 'GET_CATEGORY_FAILURE';
 
 const initialState = {
   categories: [],
-  category: {},
+  category: {
+    children: [],
+  },
 };
 
 function updateCategories(categories) {

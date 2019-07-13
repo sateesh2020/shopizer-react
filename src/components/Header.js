@@ -24,7 +24,7 @@ class Header extends Component {
                 <div className="top_single_area d-flex align-items-center">
                   <div className="top_logo">
                     <a href="#">
-                      <img src="assets/img/core-img/logo.png" alt="" />
+                      <img src="/assets/img/core-img/logo.png" alt="" />
                     </a>
                   </div>
                   <div className="header-cart-menu d-flex align-items-center ml-auto">

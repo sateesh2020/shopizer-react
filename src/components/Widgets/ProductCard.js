@@ -1,12 +1,22 @@
 import React, { Component } from 'react';
+import classnames from 'classnames';
+import ScrollAnimation from '../ScrollAnimation';
 
 export default class ProductCard extends Component {
   render() {
-    let { product } = this.props;
+    let { product, colClass } = this.props;
+    colClass = colClass || 'col-md-4';
     return (
-      <div className="col-12 col-sm-6 col-md-4 single_gallery_item">
+      <ScrollAnimation
+        className={classnames(
+          'col-xs-12 col-sm-6 single_gallery_item',
+          colClass
+        )}
+        animateIn="fadeInUp"
+        animateOnce={true}
+      >
         <div className="product-img">
-          <img src="assets/img/product-img/product-3.jpg" alt="" />
+          <img src="/assets/img/product-img/product-3.jpg" alt="" />
           <div className="product-quicview">
             <a href="#" data-toggle="modal" data-target="#quickview">
               <i className="fa fa-plus" />
@@ -20,7 +30,7 @@ export default class ProductCard extends Component {
             ADD TO CART
           </a>
         </div>
-      </div>
+      </ScrollAnimation>
     );
   }
 }

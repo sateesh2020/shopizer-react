@@ -1,44 +1,76 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import Header from '../../components/Header';
-import Footer from '../../components/Footer';
-
 import Products from './Products';
+import { ProductFilter } from '../../components/Widgets';
 
-import { loadProducts } from '../../redux/modules/products';
+import { loadProducts, filterProducts } from '../../redux/modules/products';
+import { loadCategory } from '../../redux/modules/categories';
 
 class Category extends Component {
+  constructor(props) {
+    super(props);
+    this.filter = this.filter.bind(this);
+  }
   componentDidMount() {
     let categoryId = this.props.location.id;
     if (!categoryId) {
+      //categoryId = 1;
       this.props.history.goBack();
+    } else {
+      this.props.loadProducts({
+        category: categoryId,
+      });
+      this.props.loadCategory(categoryId);
     }
-    this.props.loadProducts({
-      category: categoryId,
-    });
+  }
+  componentDidUpdate(prevProps) {
+    let categoryId = this.props.location.id;
+    if (categoryId && categoryId !== prevProps.location.id) {
+      this.props.loadProducts({
+        category: categoryId,
+      });
+      this.props.loadCategory(categoryId);
+    }
+  }
+  filter(filterType, filterVal) {
+    this.props.filterProducts({ [filterType]: filterVal });
   }
   render() {
-    let { products } = this.props;
-    console.log(products);
+    let { products, category, filters, manufactures } = this.props;
     return (
-      <section>
-        <div id="wrapper">
-          <Header />
-          <Products products={products} />
-          <Footer />
+      <section className="shop_grid_area section_padding_100">
+        <div className="container">
+          <div className="row">
+            <div className="col-12 col-md-4 col-lg-3">
+              <ProductFilter
+                filter={this.filter}
+                categories={category.children}
+                manufactures={manufactures}
+                filters={filters}
+              />
+            </div>
+            <div className="col-12 col-md-8 col-lg-9">
+              <Products products={products} />
+            </div>
+          </div>
         </div>
       </section>
     );
   }
 }
 
-const mapStateToProps = ({ products }) => ({
+const mapStateToProps = ({ products, categories, manufactures }) => ({
   products: products.products,
+  category: categories.category,
+  filters: products.filters,
+  manufactures: manufactures.manufactures,
 });
 
 const mapDispatchToProps = dispatch => ({
   loadProducts: filter => dispatch(loadProducts(filter)),
+  filterProducts: filters => dispatch(filterProducts(filters)),
+  loadCategory: categoryId => dispatch(loadCategory(categoryId)),
 });
 
 Category = connect(

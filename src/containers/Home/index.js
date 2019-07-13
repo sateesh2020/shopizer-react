@@ -1,28 +1,18 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import Header from '../../components/Header';
-import Footer from '../../components/Footer';
-
 import Featured from './Featured';
 
 import { loadFeaturedProducts } from '../../redux/modules/products';
 
 class Home extends Component {
   componentDidMount() {
+    console.log('In Home');
     this.props.loadFeaturedProducts();
   }
   render() {
     let { featured } = this.props;
-    return (
-      <section>
-        <div id="wrapper">
-          <Header />
-          <Featured featured={featured} />
-          <Footer />
-        </div>
-      </section>
-    );
+    return <Featured featured={featured} />;
   }
 }
 
