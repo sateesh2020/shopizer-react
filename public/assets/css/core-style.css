@@ -337,6 +337,18 @@ img {
     border-color: #ff084e;
 }
 
+.font-75 {
+    font-size: 75%
+}
+
+.font-85 {
+    font-size: 85%
+}
+
+.font-95 {
+    font-size: 95%
+}
+
 /* -------------------
 :: 4.0 Wrapper CSS
 ------------------- */
@@ -1665,7 +1677,7 @@ img {
 }
 
 .single_product_thumb .carousel-indicators li.active {
-    border: 1px solid #ddd;
+    border: 2px solid #ff084e;
 }
 
 .single_product_thumb .product_badge {
@@ -1787,7 +1799,6 @@ img {
     color: #fff;
     font-size: 14px;
     height: 40px;
-    margin-left: 15px;
     text-transform: uppercase;
     width: 150px;
     cursor: pointer;

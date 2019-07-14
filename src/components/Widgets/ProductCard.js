@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 import classnames from 'classnames';
+import { Link } from 'react-router-dom';
+
 import ScrollAnimation from '../ScrollAnimation';
+
+import { SHOP_URLS } from '../../config/constants';
 
 export default class ProductCard extends Component {
   render() {
@@ -15,21 +19,22 @@ export default class ProductCard extends Component {
         animateIn="fadeInUp"
         animateOnce={true}
       >
-        <div className="product-img">
-          <img src="/assets/img/product-img/product-3.jpg" alt="" />
-          <div className="product-quicview">
-            <a href="#" data-toggle="modal" data-target="#quickview">
-              <i className="fa fa-plus" />
-            </a>
+        <Link
+          to={{
+            pathname: SHOP_URLS.PRODUCT + '/' + product.description.friendlyUrl,
+            id: product.id,
+          }}
+        >
+          <div className="product-img">
+            <img src="/assets/img/product-img/product-3.jpg" alt="" />
+            <div className="product-quicview" />
           </div>
-        </div>
-        <div className="product-description">
-          <h4 className="product-price">{product.finalPrice}</h4>
-          <p>{product.description.name}</p>
-          <a href="#" className="add-to-cart-btn">
-            ADD TO CART
-          </a>
-        </div>
+          <div className="product-description">
+            <h4 className="product-price">{product.finalPrice}</h4>
+
+            {product.description.name}
+          </div>
+        </Link>
       </ScrollAnimation>
     );
   }
