@@ -1642,6 +1642,26 @@ img {
 /* ------------------------------
 :: 17.0 Product Details Area CSS
 ------------------------------ */
+.related-items .carousel-inner .carousel-item.active,
+.related-items .carousel-inner .carousel-item-next,
+.related-items .carousel-inner .carousel-item-prev {
+    display: flex;
+}
+
+.related-items .carousel-inner .carousel-item-right.active,
+.related-items .carousel-inner .carousel-item-next {
+    transform: translateX(25%);
+}
+
+.related-items .carousel-inner .carousel-item-left.active,
+.related-items .carousel-inner .carousel-item-prev {
+    transform: translateX(-25%);
+}
+
+.related-items .carousel-inner .carousel-item-right,
+.related-items .carousel-inner .carousel-item-left {
+    transform: translateX(0);
+}
 
 .single_product_thumb {
     margin-bottom: 100px;
