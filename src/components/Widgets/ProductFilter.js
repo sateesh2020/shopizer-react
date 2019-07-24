@@ -24,7 +24,7 @@ export default class ProductFilter extends Component {
                     <li
                       key={category.code}
                       className={classnames({
-                        active: filters[FILTERS.CATEGORY] == category.code,
+                        active: filters[FILTERS.CATEGORY] === category.code,
                       })}
                       onClick={() => filter(FILTERS.CATEGORY, category.code)}
                     >
@@ -56,7 +56,7 @@ export default class ProductFilter extends Component {
                         key={manufacturer.code}
                         className={classnames({
                           active:
-                            filters[FILTERS.MANUFACTURER] == manufacturer.code,
+                            filters[FILTERS.MANUFACTURER] === manufacturer.code,
                         })}
                         onClick={() =>
                           filter(FILTERS.MANUFACTURER, manufacturer.code)
@@ -89,7 +89,7 @@ export default class ProductFilter extends Component {
                   <li
                     key={price.id}
                     className={classnames({
-                      active: filters[FILTERS.PRICE] == price.id,
+                      active: filters[FILTERS.PRICE] === price.id,
                     })}
                     onClick={() => filter(FILTERS.PRICE, price.id)}
                   >

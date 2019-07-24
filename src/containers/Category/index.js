@@ -60,11 +60,15 @@ class Category extends Component {
   }
 }
 
-const mapStateToProps = ({ products, categories, manufactures }) => ({
-  products: products.products,
-  category: categories.category,
-  filters: products.filters,
-  manufactures: manufactures.manufactures,
+const mapStateToProps = ({
+  productsStore,
+  categoriesStore,
+  manufacturesStore,
+}) => ({
+  products: productsStore.products,
+  category: categoriesStore.category,
+  filters: productsStore.filters,
+  manufactures: manufacturesStore.manufactures,
 });
 
 const mapDispatchToProps = dispatch => ({
