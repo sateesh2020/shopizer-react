@@ -16,8 +16,8 @@ class Home extends Component {
   }
 }
 
-const mapStateToProps = ({ products }) => ({
-  featured: products.featured,
+const mapStateToProps = ({ productsStore }) => ({
+  featured: productsStore.featured,
 });
 
 const mapDispatchToProps = dispatch => ({

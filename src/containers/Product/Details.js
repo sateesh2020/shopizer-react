@@ -26,7 +26,7 @@ const items = [
 
 export default class Details extends Component {
   render() {
-    let { product } = this.props;
+    let { product, addToCart } = this.props;
     let description = product.description || {};
     return (
       <section className="single_product_details_area section_padding_100">
@@ -59,6 +59,7 @@ export default class Details extends Component {
                     type="submit"
                     name="addtocart"
                     className="btn cart-submit d-block"
+                    onClick={() => addToCart(product)}
                   >
                     Add to cart
                   </button>

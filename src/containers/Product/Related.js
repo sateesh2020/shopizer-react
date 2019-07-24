@@ -6,7 +6,6 @@ import { ProductCard } from '../../components/Widgets';
 
 function Arrows(props) {
   const { className, style, onClick, forward } = props;
-  console.log(props);
   return (
     <span
       className={classnames(

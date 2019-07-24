@@ -478,13 +478,15 @@ img {
     top: 50px;
     width: 280px;
     z-index: 120;
+    max-height: 400px;
+    overflow-y: scroll;
 }
 
 .cart-data-open .cart-list {
     display: block;
 }
 
-.cart-list>li {
+.cart-list>.dropdown-item {
     border-bottom: 1px solid #ebebeb;
     padding: 20px 15px;
     position: relative;
@@ -492,7 +494,7 @@ img {
     z-index: 1;
 }
 
-.cart-list li .image {
+.cart-list .dropdown-item .image {
     left: 15px;
     position: absolute;
     top: 20px;
