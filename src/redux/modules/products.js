@@ -22,12 +22,16 @@ const GET_FEATURE_ITEMS_SUCCESS = 'GET_FEATURE_ITEMS_SUCCESS';
 const GET_FEATURE_ITEMS_FAILURE = 'GET_FEATURE_ITEMS_FAILURE';
 const FILTER_PRODUCTS_SUCCESS = 'FILTER_PRODUCTS_SUCCESS';
 const UPDATE_FILTERS = 'UPDATE_FILTERS';
+const GET_RELATED_ITEMS_SUCCESS = 'GET_RELATED_ITEMS_SUCCESS';
+const GET_RELATED_ITEMS_FAILURE = 'GET_RELATED_ITEMS_FAILURE';
+
 const initialState = {
   products: [],
   product: {},
   featured: [],
   productsCopy: [],
   filters: {},
+  related: [],
 };
 
 function updateProducts(products) {
@@ -61,6 +65,13 @@ function updateFeatured(featured) {
   return {
     type: GET_FEATURE_ITEMS_SUCCESS,
     featured,
+  };
+}
+
+function updateRelated(related) {
+  return {
+    type: GET_RELATED_ITEMS_SUCCESS,
+    related,
   };
 }
 
@@ -188,6 +199,18 @@ export function loadFeaturedProducts() {
   };
 }
 
+export function loadRelatedProducts(productID) {
+  return function(dispatch) {
+    return ProductsAPI.getRelatedProducts(productID)
+      .then(products => {
+        dispatch(updateRelated(products));
+      })
+      .catch(error => {
+        throw error;
+      });
+  };
+}
+
 export default function reducer(state = initialState, action) {
   switch (action.type) {
     case GET_PRODUCTS_SUCCESS:
@@ -221,6 +244,12 @@ export default function reducer(state = initialState, action) {
       return update(state, {
         filter: {
           $set: action.filters,
+        },
+      });
+    case GET_RELATED_ITEMS_SUCCESS:
+      return update(state, {
+        related: {
+          $set: action.related,
         },
       });
     default:

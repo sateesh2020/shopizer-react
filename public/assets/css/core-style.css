@@ -337,6 +337,18 @@ img {
     border-color: #ff084e;
 }
 
+.font-75 {
+    font-size: 75%
+}
+
+.font-85 {
+    font-size: 85%
+}
+
+.font-95 {
+    font-size: 95%
+}
+
 /* -------------------
 :: 4.0 Wrapper CSS
 ------------------- */
@@ -466,13 +478,15 @@ img {
     top: 50px;
     width: 280px;
     z-index: 120;
+    max-height: 400px;
+    overflow-y: scroll;
 }
 
 .cart-data-open .cart-list {
     display: block;
 }
 
-.cart-list>li {
+.cart-list>.dropdown-item {
     border-bottom: 1px solid #ebebeb;
     padding: 20px 15px;
     position: relative;
@@ -480,7 +494,7 @@ img {
     z-index: 1;
 }
 
-.cart-list li .image {
+.cart-list .dropdown-item .image {
     left: 15px;
     position: absolute;
     top: 20px;
@@ -1630,6 +1644,26 @@ img {
 /* ------------------------------
 :: 17.0 Product Details Area CSS
 ------------------------------ */
+.related-items .carousel-inner .carousel-item.active,
+.related-items .carousel-inner .carousel-item-next,
+.related-items .carousel-inner .carousel-item-prev {
+    display: flex;
+}
+
+.related-items .carousel-inner .carousel-item-right.active,
+.related-items .carousel-inner .carousel-item-next {
+    transform: translateX(25%);
+}
+
+.related-items .carousel-inner .carousel-item-left.active,
+.related-items .carousel-inner .carousel-item-prev {
+    transform: translateX(-25%);
+}
+
+.related-items .carousel-inner .carousel-item-right,
+.related-items .carousel-inner .carousel-item-left {
+    transform: translateX(0);
+}
 
 .single_product_thumb {
     margin-bottom: 100px;
@@ -1665,7 +1699,7 @@ img {
 }
 
 .single_product_thumb .carousel-indicators li.active {
-    border: 1px solid #ddd;
+    border: 2px solid #ff084e;
 }
 
 .single_product_thumb .product_badge {
@@ -1787,7 +1821,6 @@ img {
     color: #fff;
     font-size: 14px;
     height: 40px;
-    margin-left: 15px;
     text-transform: uppercase;
     width: 150px;
     cursor: pointer;

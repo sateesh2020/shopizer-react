@@ -5,10 +5,15 @@ import Header from '../../components/Header';
 import Footer from '../../components/Footer';
 
 import { loadManufactures } from '../../redux/modules/manufactures';
+import { loadCategories } from '../../redux/modules/categories';
+import { loadCustomerCart } from '../../redux/modules/cart';
 
 class Shell extends Component {
   componentDidMount() {
     this.props.loadManufactures();
+    this.props.loadCategories();
+    // TO-DO remove hardcoding and implement guest cart
+    this.props.loadCustomerCart(1);
   }
   render() {
     return (
@@ -25,6 +30,8 @@ class Shell extends Component {
 
 const mapDispatchToProps = dispatch => ({
   loadManufactures: () => dispatch(loadManufactures()),
+  loadCategories: () => dispatch(loadCategories()),
+  loadCustomerCart: customerID => dispatch(loadCustomerCart(customerID)),
 });
 
 Shell = connect(

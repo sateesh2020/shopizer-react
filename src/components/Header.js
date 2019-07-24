@@ -5,14 +5,7 @@ import { connect } from 'react-redux';
 import { Menu, SocialArea } from './Widgets';
 import MiniCart from './MiniCart';
 
-import { loadCategories } from '../redux/modules/categories';
-
 class Header extends Component {
-  componentDidMount() {
-    let { loadCategories } = this.props;
-    loadCategories();
-  }
-
   render() {
     let { categories } = this.props;
     return (
@@ -85,17 +78,13 @@ class Header extends Component {
   }
 }
 
-const mapStateToProps = ({ categories }) => ({
-  categories: categories.categories,
-});
-
-const mapDispatchToProps = dispatch => ({
-  loadCategories: () => dispatch(loadCategories()),
+const mapStateToProps = ({ categoriesStore }) => ({
+  categories: categoriesStore.categories,
 });
 
 Header = connect(
   mapStateToProps,
-  mapDispatchToProps
+  null
 )(Header);
 
 export default Header;

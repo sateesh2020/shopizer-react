@@ -2,6 +2,7 @@ const SHOP_URLS = {
   BASE: '/shopizer',
   HOME: '/shopizer/home',
   CATEGORY: '/shopizer/category',
+  PRODUCT: '/shopizer/product',
 };
 
 const API_URLS = {

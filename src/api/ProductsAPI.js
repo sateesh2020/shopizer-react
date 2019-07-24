@@ -35,6 +35,15 @@ class ProductsAPI {
       });
   }
 
+  static getRelatedProducts(productID) {
+    return axios
+      .get(`${API_URLS.BASE}${GET_PRODUCTS}/${productID}/related`)
+      .then(response => response.data || [])
+      .catch(error => {
+        console.error(error);
+        return error;
+      });
+  }
   static getProductDetails(id) {
     return axios
       .get(`${API_URLS.BASE}${GET_PRODUCTS}/${id}`)
