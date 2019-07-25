@@ -6,6 +6,9 @@ import {
   DropdownMenu,
   DropdownItem,
 } from 'reactstrap';
+import { Link } from 'react-router-dom';
+
+import { SHOP_URLS } from '../config/constants';
 
 class MiniCart extends Component {
   constructor(props) {
@@ -60,9 +63,9 @@ class MiniCart extends Component {
           })}
           <li className="total">
             <span className="pull-right">Total: {cart.displayTotal}</span>
-            <a href="cart.html" className="btn btn-sm btn-cart">
+            <Link to={SHOP_URLS.CART} className="btn btn-sm btn-cart">
               Cart
-            </a>
+            </Link>
             <a href="checkout-1.html" className="btn btn-sm btn-checkout">
               Checkout
             </a>

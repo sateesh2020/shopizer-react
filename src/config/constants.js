@@ -3,6 +3,7 @@ const SHOP_URLS = {
   HOME: '/shopizer/home',
   CATEGORY: '/shopizer/category',
   PRODUCT: '/shopizer/product',
+  CART: '/shopizer/cart',
 };
 
 const API_URLS = {
