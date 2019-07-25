@@ -149,10 +149,9 @@ function filterProductsPromise(newFilters, state) {
 }
 
 export function filterProducts(newFilters) {
-  console.log('in filter Products');
   return function(dispatch, getState) {
     const state = getState();
-    return filterProductsPromise(newFilters, state.products)
+    return filterProductsPromise(newFilters, state.productsStore)
       .then(response => {
         dispatch(updateFiltered(response.products));
         dispatch(updateFilters(response.filters));
