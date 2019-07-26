@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { SocialArea } from './Widgets';
 
 export default class Footer extends Component {
   render() {
@@ -16,7 +17,11 @@ export default class Footer extends Component {
                     Copyright &copy;
                     <script>document.write(new Date().getFullYear());</script>
                     All rights reserved | Template is made by{' '}
-                    <a href="https://colorlib.com" target="_blank">
+                    <a
+                      href="https://colorlib.com"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
                       Colorlib
                     </a>
                   </p>
@@ -27,19 +32,16 @@ export default class Footer extends Component {
               <div className="single_footer_area">
                 <ul className="footer_widget_menu">
                   <li>
-                    <a href="#">About</a>
+                    <a href="/about">About</a>
                   </li>
                   <li>
-                    <a href="#">Blog</a>
+                    <a href="/blog">Blog</a>
                   </li>
                   <li>
-                    <a href="#">Faq</a>
+                    <a href="/returns">Returns</a>
                   </li>
                   <li>
-                    <a href="#">Returns</a>
-                  </li>
-                  <li>
-                    <a href="#">Contact</a>
+                    <a href="/contact">Contact</a>
                   </li>
                 </ul>
               </div>
@@ -48,16 +50,13 @@ export default class Footer extends Component {
               <div className="single_footer_area">
                 <ul className="footer_widget_menu">
                   <li>
-                    <a href="#">My Account</a>
+                    <a href="/account">My Account</a>
                   </li>
                   <li>
-                    <a href="#">Shipping</a>
+                    <a href="/shipping">Shipping</a>
                   </li>
                   <li>
-                    <a href="#">Our Policies</a>
-                  </li>
-                  <li>
-                    <a href="#">Afiliates</a>
+                    <a href="/policies">Our Policies</a>
                   </li>
                 </ul>
               </div>
@@ -88,18 +87,7 @@ export default class Footer extends Component {
             <div className="row">
               <div className="col-12">
                 <div className="footer_social_area text-center">
-                  <a href="#">
-                    <i className="fa fa-pinterest" aria-hidden="true" />
-                  </a>
-                  <a href="#">
-                    <i className="fa fa-facebook" aria-hidden="true" />
-                  </a>
-                  <a href="#">
-                    <i className="fa fa-twitter" aria-hidden="true" />
-                  </a>
-                  <a href="#">
-                    <i className="fa fa-linkedin" aria-hidden="true" />
-                  </a>
+                  <SocialArea />
                 </div>
               </div>
             </div>

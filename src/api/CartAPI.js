@@ -5,6 +5,12 @@ const getCustomerCartUrl = customerID => {
   return `/customers/${customerID}/cart`;
 };
 
+const getCartUrlByCode = cartCode => {
+  if (cartCode) {
+    return `/cart/${cartCode}`;
+  }
+  return `/cart`;
+};
 class CartAPI {
   static getCustomerCart(customerID) {
     return axios
@@ -16,9 +22,33 @@ class CartAPI {
       });
   }
 
-  static updateProductsInCustomerCart(customerID, request) {
+  static updateProductsInCustomerCart(customerID, newProduct) {
     return axios
-      .post(`${API_URLS.BASE}${getCustomerCartUrl(customerID)}`, request)
+      .post(`${API_URLS.BASE}${getCustomerCartUrl(customerID)}`, newProduct)
+      .then(response => response.data)
+      .catch(error => {
+        console.error(error);
+        return error;
+      });
+  }
+
+  static getCartByCode(cartCode) {
+    return axios
+      .get(`${API_URLS.BASE}${getCartUrlByCode(cartCode)}`)
+      .then(response => response.data)
+      .catch(error => {
+        console.error(error);
+        return error;
+      });
+  }
+
+  static updateProductsInCart(cartCode, newProduct) {
+    var request = {
+      method: cartCode ? 'put' : 'post',
+      url: `${API_URLS.BASE}${getCartUrlByCode(cartCode)}`,
+      data: newProduct,
+    };
+    return axios(request)
       .then(response => response.data)
       .catch(error => {
         console.error(error);

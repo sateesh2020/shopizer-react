@@ -9,6 +9,7 @@ import Shell from './containers/Shell';
 import Home from './containers/Home';
 import Category from './containers/Category';
 import Product from './containers/Product';
+import Cart from './containers/Cart';
 
 import history from './history';
 import { SHOP_URLS } from './config/constants';
@@ -37,6 +38,7 @@ ReactDOM.render(
                   path={SHOP_URLS.PRODUCT + '/:product'}
                   component={Product}
                 />
+                <Route exact path={SHOP_URLS.CART} component={Cart} />
               </React.Fragment>
             )}
           />

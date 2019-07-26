@@ -3,10 +3,11 @@ const SHOP_URLS = {
   HOME: '/shopizer/home',
   CATEGORY: '/shopizer/category',
   PRODUCT: '/shopizer/product',
+  CART: '/shopizer/cart',
 };
 
 const API_URLS = {
-  BASE: 'http://localhost:8080/api/v1',
+  BASE: 'http://localhost:32768/api/v1',
 };
 
 const PRICE_FILTERS = [
