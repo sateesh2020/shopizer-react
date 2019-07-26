@@ -1,9 +1,11 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 import { Menu, SocialArea } from './Widgets';
 import MiniCart from './MiniCart';
+import { SHOP_URLS } from '../config/constants';
 
 class Header extends Component {
   render() {
@@ -16,9 +18,9 @@ class Header extends Component {
               <div className="col-12 col-lg-7">
                 <div className="top_single_area d-flex align-items-center">
                   <div className="top_logo">
-                    <a href="#">
+                    <Link to={SHOP_URLS.HOME}>
                       <img src="/assets/img/core-img/logo.png" alt="" />
-                    </a>
+                    </Link>
                   </div>
                   <div className="header-cart-menu d-flex align-items-center ml-auto">
                     <MiniCart />
@@ -38,7 +40,9 @@ class Header extends Component {
           <div className="container h-100">
             <div className="row h-100">
               <div className="col-12 d-md-flex justify-content-between">
-                <SocialArea />
+                <div className="header-social-area">
+                  <SocialArea />
+                </div>
                 <div className="main-menu-area">
                   <nav className="navbar navbar-expand-lg align-items-start">
                     <button

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import { loadProduct, loadRelatedProducts } from '../../redux/modules/products';
-import { updateProductsInCustomerCart } from '../../redux/modules/cart';
+import { updateProductsInCart } from '../../redux/modules/cart';
 import Details from './Details';
 import Related from './Related';
 
@@ -28,10 +28,10 @@ class Product extends Component {
     // TO-DO remove hardcoding and implement guest cart
     let request = {
       productID: id,
-      customerID: 1,
+      cartCode: '6eefd51bc64a432fa55397e075d12910',
       quantity: 1,
     };
-    this.props.updateProductsInCustomerCart(request);
+    this.props.updateProductsInCart(request);
   };
   render() {
     let { product, related } = this.props;
@@ -52,8 +52,7 @@ const mapStateToProps = ({ productsStore }) => ({
 const mapDispatchToProps = dispatch => ({
   loadProduct: productID => dispatch(loadProduct(productID)),
   loadRelatedProducts: productID => dispatch(loadRelatedProducts(productID)),
-  updateProductsInCustomerCart: request =>
-    dispatch(updateProductsInCustomerCart(request)),
+  updateProductsInCart: request => dispatch(updateProductsInCart(request)),
 });
 
 Product = connect(
