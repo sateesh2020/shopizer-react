@@ -7,7 +7,7 @@ const SHOP_URLS = {
 };
 
 const API_URLS = {
-  BASE: 'http://localhost:32768/api/v1',
+  BASE: 'http://localhost:8080/api/v1',
 };
 
 const PRICE_FILTERS = [
@@ -38,4 +38,7 @@ const FILTERS = {
   PRICE: 'PRICE',
   MANUFACTURER: 'MANUFACTURER',
 };
-export { SHOP_URLS, API_URLS, PRICE_FILTERS, FILTERS };
+
+const CART_ID = 'c06b702d9e064d8a86c15842574b13d2';
+
+export { SHOP_URLS, API_URLS, PRICE_FILTERS, FILTERS, CART_ID };
