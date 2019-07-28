@@ -10,6 +10,7 @@ import Home from './containers/Home';
 import Category from './containers/Category';
 import Product from './containers/Product';
 import Cart from './containers/Cart';
+import Checkout from './containers/Checkout';
 
 import history from './history';
 import { SHOP_URLS } from './config/constants';
@@ -39,6 +40,7 @@ ReactDOM.render(
                   component={Product}
                 />
                 <Route exact path={SHOP_URLS.CART} component={Cart} />
+                <Route exact path={SHOP_URLS.CHECKOUT} component={Checkout} />
               </React.Fragment>
             )}
           />

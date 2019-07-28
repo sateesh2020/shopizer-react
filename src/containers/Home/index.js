@@ -7,7 +7,6 @@ import { loadFeaturedProducts } from '../../redux/modules/products';
 
 class Home extends Component {
   componentDidMount() {
-    console.log('In Home');
     this.props.loadFeaturedProducts();
   }
   render() {

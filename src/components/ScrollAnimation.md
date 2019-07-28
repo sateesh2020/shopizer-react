@@ -2,6 +2,7 @@
 
 ```jsx
 import ScrollAnimation from 'react-animate-on-scroll';
+
 <ScrollAnimation animateIn="fadeIn">Some Text</ScrollAnimation>;
 ```
 

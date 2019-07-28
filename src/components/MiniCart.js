@@ -66,9 +66,9 @@ class MiniCart extends Component {
             <Link to={SHOP_URLS.CART} className="btn btn-sm btn-cart">
               Cart
             </Link>
-            <a href="checkout-1.html" className="btn btn-sm btn-checkout">
+            <Link to={SHOP_URLS.CHECKOUT} className="btn btn-sm btn-checkout">
               Checkout
-            </a>
+            </Link>
           </li>
         </DropdownMenu>
       </Dropdown>

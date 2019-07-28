@@ -4,6 +4,7 @@ const SHOP_URLS = {
   CATEGORY: '/shopizer/category',
   PRODUCT: '/shopizer/product',
   CART: '/shopizer/cart',
+  CHECKOUT: '/shopizer/checkout',
 };
 
 const API_URLS = {

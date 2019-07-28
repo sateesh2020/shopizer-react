@@ -6,7 +6,7 @@ import ProductCarousel from './ProductCarousel';
 import ProductReview from './ProductReview';
 import ProductAccordion from './ProductAccordion';
 import Quantity from './Quantity';
-
+import Address from './Address';
 export {
   Menu,
   SocialArea,
@@ -16,4 +16,5 @@ export {
   ProductReview,
   ProductAccordion,
   Quantity,
+  Address,
 };
