@@ -5,6 +5,7 @@ import ProductFilter from './ProductFilter';
 import ProductCarousel from './ProductCarousel';
 import ProductReview from './ProductReview';
 import ProductAccordion from './ProductAccordion';
+import Quantity from './Quantity';
 
 export {
   Menu,
@@ -14,4 +15,5 @@ export {
   ProductCarousel,
   ProductReview,
   ProductAccordion,
+  Quantity,
 };

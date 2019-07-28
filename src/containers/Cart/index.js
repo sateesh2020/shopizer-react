@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
+import { Quantity } from '../../components/Widgets';
+
 class Cart extends Component {
   render() {
     let { cart } = this.props;
@@ -38,27 +40,7 @@ class Cart extends Component {
                             <span>{product.finalPrice}</span>
                           </td>
                           <td className="qty">
-                            <div className="quantity">
-                              <span className="qty-minus">
-                                <i className="fa fa-minus" aria-hidden="true" />
-                              </span>
-                              <input
-                                type="number"
-                                className="qty-text"
-                                id="qty"
-                                step="1"
-                                min="1"
-                                max="99"
-                                name="quantity"
-                                onChange={() => {
-                                  console.log('ohoo');
-                                }}
-                                value={product.quantity}
-                              />
-                              <span className="qty-plus">
-                                <i className="fa fa-plus" aria-hidden="true" />
-                              </span>
-                            </div>
+                            <Quantity quantity={product.quantity} />
                           </td>
                           <td className="total_price">
                             <span>{product.displaySubTotal}</span>
