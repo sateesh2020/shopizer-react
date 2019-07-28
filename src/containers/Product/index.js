@@ -6,12 +6,13 @@ import { updateProductsInCart } from '../../redux/modules/cart';
 import Details from './Details';
 import Related from './Related';
 
+import { CART_ID } from '../../config/constants';
+
 class Product extends Component {
   componentDidMount() {
     let productID = this.props.location.id;
     if (!productID) {
-      productID = 50;
-      //this.props.history.goBack();
+      this.props.history.goBack();
     }
     this.props.loadProduct(productID);
     this.props.loadRelatedProducts(productID);
@@ -28,7 +29,7 @@ class Product extends Component {
     // TO-DO remove hardcoding and implement guest cart
     let request = {
       productID: id,
-      cartCode: '6eefd51bc64a432fa55397e075d12910',
+      cartCode: CART_ID,
       quantity: 1,
     };
     this.props.updateProductsInCart(request);
