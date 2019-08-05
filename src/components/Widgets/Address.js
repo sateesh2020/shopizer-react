@@ -1,49 +1,56 @@
 import React, { Component } from 'react';
+import { reduxForm, Field } from 'redux-form';
+import { required, email } from '../../config/validations';
 
-export default class Address extends Component {
+class Address extends Component {
   render() {
     return (
       <div>
         <form action="#" method="post">
           <div className="row">
             <div className="col-md-6 mb-3">
-              <label htmlFor="first_name">
+              <label htmlFor="firstName">
                 First Name <span>*</span>
               </label>
-              <input
-                type="text"
+              <Field
                 className="form-control"
-                id="first_name"
-                value=""
-                required
+                component="input"
+                type="text"
+                name="firstName"
+                validate={required}
               />
             </div>
             <div className="col-md-6 mb-3">
-              <label htmlFor="last_name">
+              <label htmlFor="lastName">
                 Last Name <span>*</span>
               </label>
-              <input
-                type="text"
+              <Field
                 className="form-control"
-                id="last_name"
-                value=""
-                required
+                component="input"
+                type="text"
+                name="lastName"
+                validate={required}
               />
             </div>
             <div className="col-12 mb-3">
               <label htmlFor="company">Company Name</label>
-              <input
-                type="text"
+              <Field
                 className="form-control"
-                id="company"
-                value=""
+                component="input"
+                type="text"
+                name="company"
               />
             </div>
             <div className="col-12 mb-3">
               <label htmlFor="country">
                 Country <span>*</span>
               </label>
-              <select className="custom-select d-block w-100" id="country">
+              <Field
+                className="custom-select d-block w-100"
+                component="select"
+                name="country"
+                validate={required}
+              >
                 <option value="usa">United States</option>
                 <option value="uk">United Kingdom</option>
                 <option value="ger">Germany</option>
@@ -52,100 +59,111 @@ export default class Address extends Component {
                 <option value="aus">Australia</option>
                 <option value="bra">Brazil</option>
                 <option value="cana">Canada</option>
-              </select>
+              </Field>
             </div>
             <div className="col-12 mb-3">
-              <label htmlFor="street_address">
+              <label htmlFor="streetAddress">
                 Address <span>*</span>
               </label>
-              <input
-                type="text"
-                className="form-control mb-3"
-                id="street_address"
-                value=""
-              />
-              <input
-                type="text"
+              <Field
                 className="form-control"
-                id="street_address2"
-                value=""
+                component="input"
+                type="textarea"
+                name="streetAddress"
+                validate={required}
               />
             </div>
             <div className="col-12 mb-3">
-              <label htmlFor="postcode">
+              <label htmlFor="postCode">
                 Postcode <span>*</span>
               </label>
-              <input
-                type="text"
+              <Field
                 className="form-control"
-                id="postcode"
-                value=""
+                component="input"
+                type="text"
+                name="postCode"
+                validate={required}
               />
             </div>
             <div className="col-12 mb-3">
               <label htmlFor="city">
                 Town/City <span>*</span>
               </label>
-              <input type="text" className="form-control" id="city" value="" />
+              <Field
+                className="form-control"
+                component="input"
+                type="text"
+                name="city"
+                validate={required}
+              />
             </div>
             <div className="col-12 mb-3">
               <label htmlFor="state">
                 Province <span>*</span>
               </label>
-              <input type="text" className="form-control" id="state" value="" />
+              <Field
+                className="form-control"
+                component="input"
+                type="text"
+                name="state"
+              />
             </div>
             <div className="col-12 mb-3">
-              <label htmlFor="phone_number">
+              <label htmlFor="phoneNumber">
                 Phone No <span>*</span>
               </label>
-              <input
-                type="number"
+              <Field
                 className="form-control"
-                id="phone_number"
-                min="0"
-                value=""
+                component="input"
+                type="number"
+                name="phoneNumber"
+                validate={required}
               />
             </div>
             <div className="col-12 mb-4">
-              <label htmlFor="email_address">
+              <label htmlFor="emailAddress">
                 Email Address <span>*</span>
               </label>
-              <input
-                type="email"
+              <Field
                 className="form-control"
-                id="email_address"
-                value=""
+                component="input"
+                type="email"
+                name="emailAddress"
+                validate={required}
               />
             </div>
 
             <div className="col-12">
               <div className="custom-control custom-checkbox d-block mb-2">
-                <input
-                  type="checkbox"
+                <Field
                   className="custom-control-input"
-                  id="customCheck1"
+                  component="input"
+                  type="checkbox"
+                  name="terms"
                 />
-                <label className="custom-control-label" htmlFor="customCheck1">
+                <label className="custom-control-label" htmlFor="terms">
                   Terms and conditions
                 </label>
               </div>
               <div className="custom-control custom-checkbox d-block mb-2">
-                <input
-                  type="checkbox"
+                <Field
                   className="custom-control-input"
-                  id="customCheck2"
+                  component="input"
+                  type="checkbox"
+                  name="createAccount"
                 />
-                <label className="custom-control-label" htmlFor="customCheck2">
+                <label className="custom-control-label" htmlFor="createAccount">
                   Create an account
                 </label>
               </div>
               <div className="custom-control custom-checkbox d-block">
-                <input
-                  type="checkbox"
+                <Field
                   className="custom-control-input"
-                  id="customCheck3"
+                  component="input"
+                  type="checkbox"
+                  name="subscribe"
                 />
-                <label className="custom-control-label" htmlFor="customCheck3">
+                <label className="custom-control-label" htmlFor="subscribe">
                   Subscribe to our newsletter
                 </label>
               </div>
@@ -156,3 +174,7 @@ export default class Address extends Component {
     );
   }
 }
+
+export default reduxForm({
+  form: 'address', // a unique identifier for this form
+})(Address);

@@ -61,9 +61,9 @@ class MiniCart extends Component {
               </DropdownItem>
             );
           })}
-          <li className="total">
-            <span className="pull-right">Total: {cart.displayTotal}</span>
-            <Link to={SHOP_URLS.CART} className="btn btn-sm btn-cart">
+          <li className="total p-2">
+            <span className="pull-right py-2">Total: {cart.displayTotal}</span>
+            <Link to={SHOP_URLS.CART} className="btn btn-sm btn-cart mr-15">
               Cart
             </Link>
             <Link to={SHOP_URLS.CHECKOUT} className="btn btn-sm btn-checkout">
